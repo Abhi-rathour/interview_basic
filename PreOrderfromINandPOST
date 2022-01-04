@@ -1,0 +1,19 @@
+void fillPre(int iN[], int post[], int inStrt,  int inEnd, stack<int> &s,map<int, int> hm)
+{
+    if (inStrt > inEnd)
+        return;
+ 
+    // Find index of next item in
+    // postorder traversal in inorder.
+    int val = post[postIndex];//postIndex=len-1 from starting...
+    int   inIndex = hm[val];
+    postIndex--;
+ 
+    // traverse right tree
+    fillPre(iN, post, inIndex + 1, inEnd, s, hm);
+ 
+    // traverse left tree
+    fillPre(iN, post, inStrt, inIndex - 1, s, hm);
+ 
+    s.push(val);
+}
